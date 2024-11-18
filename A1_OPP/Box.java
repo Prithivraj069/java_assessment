@@ -1,5 +1,7 @@
 package A1_OPP;
 
+import java.util.Scanner;
+
 public class Box extends Material {
     private String boxSize;
     private double weight;
@@ -41,6 +43,34 @@ public class Box extends Material {
 
     public void setBoxType(String boxType) {
         this.boxType = boxType;
+    }
+
+    @Override
+    public void displayDetails() {
+        super.displayDetails();
+        System.out.println("boxSize: " + boxSize);
+        System.out.println("weight: " + weight);
+        System.out.println("boxType: " + boxType);
+    }
+
+    public void editList(Scanner sc) {
+        super.editList(sc);
+
+        System.out.println("Enter the new boxSize");
+        String boxSize = sc.nextLine();
+         setBoxSize(boxSize.length() > 0 ? boxSize : this.boxSize);
+
+        System.out.println("Enter the new weight");
+        try {
+            double weight = sc.nextDouble();
+            this.setWeight(weight);
+        } catch (Exception e) {
+        
+        }
+
+        System.out.println("Enter the new box Type");
+        String boxType = sc.nextLine();
+        setBoxType(boxType.length() > 0 ? boxType : this.boxType);
     }
     
 }

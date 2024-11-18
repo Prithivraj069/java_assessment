@@ -1,11 +1,18 @@
 package A1_OPP;
 
-public class Material {
+import java.util.Scanner;
+
+public abstract class Material {
     private String name;
     private int quantity;
     private int noOfDays;
  
 
+    private static int product_count = 0;
+
+    public static int getMaterialCount() {
+        return product_count;
+    }
 //  overriding - different class, same method name and same parameter
     public Material() {
         name = "N/A";
@@ -22,7 +29,12 @@ public class Material {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if(name.length() > 0) {
+            this.name = name;
+        } else {
+            throw new IllegalArgumentException("Invalid customer Name");
+        }
+       
     }
 
     public int getQuantity() {
@@ -39,6 +51,31 @@ public class Material {
 
     public void setNoOfDays(int noOfDays) {
         this.noOfDays = noOfDays;
+    }
+
+    @Override 
+    public String toString() {
+        return "CustomerList [Name=" + name +", quantity="+ quantity +", noOfDays="+ noOfDays +"]";
+    }
+
+    public void displayDetails() {
+        System.out.println("Name: " + name);
+        System.out.println("Quantity: " + quantity);
+        System.out.println("NoOfDays: " + noOfDays);
+    }
+
+    public void editList(Scanner sc) {
+        System.out.println("Enter the new list name");
+        String customerName = sc.nextLine();
+        setName(customerName.length() > 0 ? customerName : this.name);
+
+        System.out.println("Enter the new quantity");
+        int newQuantity = sc.nextInt();
+        setQunatity(newQuantity > 0 ? newQuantity : this.quantity);
+
+        System.out.println("Enter the new no.of.days");
+        int newDays = sc.nextInt();
+        setNoOfDays(newDays > 0 ? newDays : this.noOfDays);
     }
 
 }
