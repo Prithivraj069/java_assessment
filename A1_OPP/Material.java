@@ -59,8 +59,8 @@ public abstract class Material {
         return price;
     }
 
-    public double getPriceWithGST() {
-        return price + Utility.calculateGST(price);
+    public double getPriceWithMaterial() {
+        return price + Utility.calculatePrice(price);
     }
 
     public void setPrice(double price) {

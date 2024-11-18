@@ -49,11 +49,18 @@ public class Main {
     private static void displayCustomerList() {
         System.out.println();
         System.out.println("All customer List");
+       
+        if(catalog.size() > 0) {
+
+       
         for(int i = 0; i < catalog.size(); i++) {
             var list = catalog.get(i);
             System.out.println("Customer List:" + i);
             list.displayDetails();
         }
+    } else {
+        System.out.println("No customer data!");
+    }
     }
 
     private static void addCustomerList() {
@@ -107,6 +114,7 @@ public class Main {
             System.out.println("please select (b) or (s)");
             return;
         }
+    
     }
 
     private static void updateCustomerList() {
