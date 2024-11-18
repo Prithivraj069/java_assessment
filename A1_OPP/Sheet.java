@@ -12,8 +12,8 @@ public class Sheet extends Material{
         sheetUsageType = "N/A";
     }
 
-    public Sheet(String name, int noOfDays, int quantity, String sheetSize, String sheetUsageType) {
-        super(name, noOfDays, quantity);
+    public Sheet(String name, int noOfDays, int quantity, double price, String sheetSize, String sheetUsageType) {
+        super(name, noOfDays, quantity, price);
         this.sheetSize = sheetSize;
         this.sheetUsageType = sheetUsageType;
     }

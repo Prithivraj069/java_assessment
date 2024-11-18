@@ -14,8 +14,8 @@ public class Box extends Material {
         boxType = "N/A";
     }
 
-    public Box(String name, int noOfDays, int quantity, String boxSize, double weight, String boxType) {
-        super(name, noOfDays, quantity);
+    public Box(String name, int noOfDays, int quantity, double price, String boxSize, double weight, String boxType) {
+        super(name, noOfDays, quantity, price);
         this.boxSize = boxSize;
         this.weight = weight;
         this.boxType = boxType;

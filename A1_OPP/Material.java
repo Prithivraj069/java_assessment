@@ -6,6 +6,7 @@ public abstract class Material {
     private String name;
     private int quantity;
     private int noOfDays;
+    private double price;
  
 
     private static int product_count = 0;
@@ -18,10 +19,11 @@ public abstract class Material {
         name = "N/A";
     }
 
-    public Material(String name, int noOfDays, int quantity) {
+    public Material(String name, int noOfDays, int quantity, double price) {
         this.name = name;
         this.noOfDays = noOfDays;
-        this.quantity = quantity;        
+        this.quantity = quantity;    
+        this.price = price;    
     }
 
     public String getName() {
@@ -53,6 +55,22 @@ public abstract class Material {
         this.noOfDays = noOfDays;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public double getPriceWithGST() {
+        return price + Utility.calculateGST(price);
+    }
+
+    public void setPrice(double price) {
+        if (price >= 0) {
+            this.price = price;
+        } else {
+            throw new IllegalArgumentException("Price cannot be less than 0");
+        }
+    }
+
     @Override 
     public String toString() {
         return "CustomerList [Name=" + name +", quantity="+ quantity +", noOfDays="+ noOfDays +"]";
@@ -76,7 +94,12 @@ public abstract class Material {
         System.out.println("Enter the new no.of.days");
         int newDays = sc.nextInt();
         setNoOfDays(newDays > 0 ? newDays : this.noOfDays);
+
+        System.out.println("Enter the new price");
+        double newPrice = sc.nextDouble();
+        setPrice(newPrice > 0 ? newPrice : this.price);
     }
 
+    
 }
 

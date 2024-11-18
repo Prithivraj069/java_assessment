@@ -73,6 +73,10 @@ public class Main {
             int days = sc.nextInt();
             sc.nextLine();
 
+            System.out.println("Enter the price: ");
+            double price = sc.nextDouble();
+            sc.nextLine();
+
             Material m;
 
             if(Materialtype.equals("b")) {
@@ -86,15 +90,15 @@ public class Main {
                 System.out.println("Enter the box type");
                 String boxtype = sc.nextLine();
 
-                m = new Box(customerName, days, quantity,boxSize, weight,boxtype);
+                m = new Box(customerName, days, quantity, price, boxSize, weight,boxtype);
             } else {
                 System.out.println("Enter the sheet size");
                 String sheetSize = sc.nextLine();
 
-                System.out.println("Enter the sheet usage type");
+                System.out.println("Enter the sheet usage type (roof) or (side)");
                 String sheetUsage = sc.nextLine();
 
-                m = new Sheet(customerName, days, quantity, sheetSize, sheetUsage);
+                m = new Sheet(customerName, days, quantity, price, sheetSize, sheetUsage);
             }
 
             catalog.add(m);
@@ -117,7 +121,12 @@ public class Main {
     }
 
     private static void deleteCustomerList() {
-        System.out.println("this is delete customer list");
+        System.out.println();
+        System.out.println("choose a list to delete");
+        displayCustomerList(); 
+        int listIndex = sc.nextInt();
+        // Material l = catalog.get(listIndex);
+       catalog.remove(listIndex);
     }
 
 }
